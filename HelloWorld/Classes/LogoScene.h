@@ -1,6 +1,6 @@
 #pragma once
 #include "D:\Gameloft_Project\HelloWorld\cocos2d\cocos\2d\CCScene.h"
-#include "cocos2d.h"
+#include <cocos2d.h>
 USING_NS_CC;
 class LogoScene :
 	public cocos2d::Scene
