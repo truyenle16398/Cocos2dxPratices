@@ -35,14 +35,14 @@ bool LogoScene::init()
 		auto scaleBy = ScaleBy::create(2.0f, 3.0f);
 		sprite->runAction(scaleBy);
 		
-		/*auto rotateBy = RotateBy::create(2.0f, 360.0f);
-		sprite2->runAction(rotateBy);*/
-		auto move = MoveBy::create(2, Vec2(visibleSize.width, visibleSize.height));
+		auto rotateBy = RotateBy::create(2.0f, 360.0f);
+		sprite2->runAction(rotateBy);
+		/*auto move = MoveBy::create(2, Vec2(visibleSize.width, visibleSize.height));
 
 		auto easing = EaseBounceIn::create(move);
 		auto easing_back = easing->reverse();
 		auto seq = Sequence::create(easing,easing_back, nullptr);
-		sprite2->runAction(seq);
+		sprite2->runAction(seq);*/
 	}
 
 	scheduleUpdate();
@@ -57,7 +57,7 @@ void LogoScene::update(float deltaTime)
 
 	if (countFrame == 80.0f)
 	{
-		//directory->replaceScene(TransitionFade::create(5, scene, Color3B(0, 0, 0)));
+		directory->replaceScene(TransitionFade::create(5, scene, Color3B(0, 0, 0)));
 
 		//directory->replaceScene(TransitionFlipY::create(5, scene));
 		//directory->replaceScene(TransitionSlideInR::create(5, scene));
