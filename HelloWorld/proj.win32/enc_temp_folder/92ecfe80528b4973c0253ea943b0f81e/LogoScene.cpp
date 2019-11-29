@@ -39,11 +39,11 @@ void LogoScene::update(float deltaTime)
 	if (countFrame == 10)
 	{
 		directory->replaceScene(TransitionFade::create(5, scene, Color3B(0, 0, 0)));
-		//directory->replaceScene(TransitionFlipY::create(5, scene));
-		//directory->replaceScene(TransitionSlideInR::create(5, scene));
-		//directory->replaceScene(TransitionJumpZoom::create(5, scene));
-		//directory->replaceScene(TransitionProgressInOut::create(5, scene));
 	}
+	//else if (countFrame += 10)
+	//{
+		//directory->replaceScene(TransitionFlipY::create(5, scene2));
+	//}
 }
 
 LogoScene::LogoScene()
