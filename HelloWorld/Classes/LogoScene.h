@@ -6,6 +6,7 @@ class LogoScene :
 	public cocos2d::Scene
 {
 public:
+	float countFrame = 0;
 	static Scene* createScene();
 	virtual bool init();
 	void update(float deltaTime);
