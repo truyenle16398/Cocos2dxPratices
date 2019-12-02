@@ -1,6 +1,7 @@
 #include "..\Classes\LogoScene.h"
 #include "HelloWorldScene.h"
 #include "LoadingScene.h"
+#include "MainMenuScene.h"
 #include<iostream>
 using namespace std;
 
@@ -45,7 +46,7 @@ bool LogoScene::init()
 		auto seq = Sequence::create(easing,easing_back, nullptr);
 		sprite2->runAction(seq);*/
 	}
-	this->schedule(schedule_selector(LogoScene::update), 3.0f);
+	//this->schedule(schedule_selector(LogoScene::update), 1.0f);
 	scheduleUpdate();
 	return true;
 }
@@ -53,10 +54,10 @@ bool LogoScene::init()
 void LogoScene::update(float deltaTime)
 {
 	countFrame++;
-	//if (countFrame >= (3 / deltaTime))
-	//{ 
+	if (countFrame >= (3 / deltaTime))
+	{ 
 		auto directory = Director::getInstance();
-		auto scene = LoadingScene::createScene();
+		auto scene = MainMenuScene::createScene();
 		
 		directory->replaceScene(TransitionFlipY::create(5, scene));
 
@@ -64,7 +65,7 @@ void LogoScene::update(float deltaTime)
 		//directory->replaceScene(TransitionJumpZoom::create(5, scene));
 		//directory->replaceScene(TransitionProgressInOut::create(5, scene));
 		//directory->replaceScene(TransitionFade::create(1.5, scene, Color3B(0, 0, 0)));
-	//}
+	}
 }
 
 LogoScene::LogoScene()

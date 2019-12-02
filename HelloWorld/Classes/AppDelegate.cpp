@@ -26,6 +26,8 @@
 #include "HelloWorldScene.h"
 #include "LogoScene.h"
 #include "LoadingScene.h"
+#include "MainMenuScene.h"
+#include "SettingScene.h"
 
 // #define USE_AUDIO_ENGINE 1
 // #define USE_SIMPLE_AUDIO_ENGINE 1
@@ -90,7 +92,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0f / 60);
@@ -103,7 +105,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
-	auto myScene = LogoScene::createScene();
+	auto myScene = SettingScene::createScene();
 
 	director->runWithScene(myScene); // khoi tao canh dau tien cho game
 
