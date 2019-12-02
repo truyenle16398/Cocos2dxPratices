@@ -4,57 +4,48 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>0_Fallen_Angels_Walking_000.png</key>
+            <key>0_Fallen_Angels_Running_000.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{1,-23}</string>
+                <string>{-9,-20}</string>
+                <key>spriteSize</key>
+                <string>{402,564}</string>
+                <key>spriteSourceSize</key>
+                <string>{900,900}</string>
+                <key>textureRect</key>
+                <string>{{1141,403},{402,564}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>0_Fallen_Angels_Running_001.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
+                <key>spriteOffset</key>
+                <string>{-7,-12}</string>
                 <key>spriteSize</key>
                 <string>{402,568}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1145,803},{402,568}}</string>
+                <string>{{1,803},{402,568}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_002.png</key>
+            <key>0_Fallen_Angels_Running_002.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{0,-20}</string>
-                <key>spriteSize</key>
-                <string>{402,570}</string>
-                <key>spriteSourceSize</key>
-                <string>{900,900}</string>
-                <key>textureRect</key>
-                <string>{{1,1205},{402,570}}</string>
-                <key>textureRotated</key>
-                <true/>
-            </dict>
-            <key>0_Fallen_Angels_Walking_004.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-9,-17}</string>
-                <key>spriteSize</key>
-                <string>{400,570}</string>
-                <key>spriteSourceSize</key>
-                <string>{900,900}</string>
-                <key>textureRect</key>
-                <string>{{571,401},{400,570}}</string>
-                <key>textureRotated</key>
-                <true/>
-            </dict>
-            <key>0_Fallen_Angels_Walking_006.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{-18,-16}</string>
+                <string>{-23,-5}</string>
                 <key>spriteSize</key>
                 <string>{398,570}</string>
                 <key>spriteSourceSize</key>
@@ -64,123 +55,156 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_008.png</key>
+            <key>0_Fallen_Angels_Running_003.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-18,-18}</string>
+                <string>{-38,3}</string>
                 <key>spriteSize</key>
-                <string>{398,568}</string>
+                <string>{402,568}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{573,1},{398,568}}</string>
+                <string>{{571,803},{402,568}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_010.png</key>
+            <key>0_Fallen_Angels_Running_004.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-8,-21}</string>
+                <string>{-40,-7}</string>
                 <key>spriteSize</key>
-                <string>{400,572}</string>
+                <string>{404,564}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1143,401},{400,572}}</string>
+                <string>{{575,1207},{404,564}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_012.png</key>
+            <key>0_Fallen_Angels_Running_005.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{2,-24}</string>
+                <string>{-26,-13}</string>
                 <key>spriteSize</key>
-                <string>{402,574}</string>
+                <string>{400,566}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{573,1207},{402,574}}</string>
+                <string>{{1,401},{400,566}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_014.png</key>
+            <key>0_Fallen_Angels_Running_006.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{2,-22}</string>
+                <string>{-9,-20}</string>
                 <key>spriteSize</key>
-                <string>{402,574}</string>
+                <string>{400,564}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1149,1207},{402,574}}</string>
+                <string>{{1149,1},{400,564}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_016.png</key>
+            <key>0_Fallen_Angels_Running_007.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-7,-19}</string>
+                <string>{-6,-14}</string>
                 <key>spriteSize</key>
-                <string>{400,572}</string>
+                <string>{402,570}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{571,803},{400,572}}</string>
+                <string>{{1141,807},{402,570}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_018.png</key>
+            <key>0_Fallen_Angels_Running_008.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-17,-17}</string>
+                <string>{-22,-8}</string>
                 <key>spriteSize</key>
-                <string>{398,572}</string>
+                <string>{398,574}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1143,1},{398,572}}</string>
+                <string>{{573,1},{398,574}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_020.png</key>
+            <key>0_Fallen_Angels_Running_009.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-19,-19}</string>
+                <string>{-37,0}</string>
                 <key>spriteSize</key>
-                <string>{398,568}</string>
+                <string>{402,572}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1,401},{398,568}}</string>
+                <string>{{1,1207},{402,572}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
-            <key>0_Fallen_Angels_Walking_022.png</key>
+            <key>0_Fallen_Angels_Running_010.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
                 <key>spriteOffset</key>
-                <string>{-10,-20}</string>
+                <string>{-41,-9}</string>
                 <key>spriteSize</key>
-                <string>{400,568}</string>
+                <string>{404,570}</string>
                 <key>spriteSourceSize</key>
                 <string>{900,900}</string>
                 <key>textureRect</key>
-                <string>{{1,801},{400,568}}</string>
+                <string>{{1141,1211},{404,570}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>0_Fallen_Angels_Running_011.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.584444,0.355556}</string>
+                <key>spriteOffset</key>
+                <string>{-26,-14}</string>
+                <key>spriteSize</key>
+                <string>{400,570}</string>
+                <key>spriteSourceSize</key>
+                <string>{900,900}</string>
+                <key>textureRect</key>
+                <string>{{569,401},{400,570}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -196,9 +220,9 @@
             <key>realTextureFileName</key>
             <string>list.png</string>
             <key>size</key>
-            <string>{1724,1610}</string>
+            <string>{1714,1616}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cab3d90afa53d771a0c0e34b78fffcce:38cdd767129c121578585f51167f016a:4a2eb95eb02800beaa9ae6f0e32805a3$</string>
+            <string>$TexturePacker:SmartUpdate:a9ad426cf84ccb19ae4d688c1fa8e6af:2711da0be39fbd63c19dad962e0e3518:4a2eb95eb02800beaa9ae6f0e32805a3$</string>
             <key>textureFileName</key>
             <string>list.png</string>
         </dict>
