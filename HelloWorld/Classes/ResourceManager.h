@@ -10,21 +10,22 @@ using namespace std;
 class ResourceManager
 {
 private:
+	static ResourceManager* s_instance;
 	string m_dataFolderPath;
-	map<char, Sprite*> m_sprites;
-	map<char, ui::Button*> m_buttons;
-	map<char, Label*> m_labels;
+	map<int, Sprite*> m_sprites;
+	map<int, ui::Button*> m_buttons;
+	map<int, Label*> m_labels;
+	ResourceManager();
 
 public:
-	ResourceManager* GetInstance();
+	static ResourceManager* GetInstance();
 	void Init(const string path);
 	void Load(string fileName);
-	Sprite* GetSpriteById(char id);
-	ui::Button* GetButtonById(char id);
-	Label* GetLableById(char id);
 
-
-	ResourceManager();
+	Sprite* GetSpriteById(int id);
+	ui::Button* GetButtonById(int id);
+	Label* GetLableById(int id);
+		
 	~ResourceManager();
 };
 

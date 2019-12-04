@@ -39,9 +39,15 @@
     <ClCompile Include="..\Classes\ResourceManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Dinasour.cpp" />
-    <ClCompile Include="..\Classes\Rock.cpp" />
-    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Bullet.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Dinasour.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Rock.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -71,9 +77,15 @@
     <ClInclude Include="..\Classes\ResourceManager.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Dinasour.h" />
-    <ClInclude Include="..\Classes\Rock.h" />
-    <ClInclude Include="..\Classes\Bullet.h" />
+    <ClInclude Include="..\Classes\Bullet.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Dinasour.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Rock.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
