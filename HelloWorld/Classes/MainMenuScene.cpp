@@ -17,18 +17,18 @@ bool MainMenuScene::init()
 		return false;
 	}
 
-	auto bg = Sprite::create("background.png");//background
+	auto bg = Sprite::create("background1.png");//background
 	auto btPlay = ui::Button::create("btPlay.png");//button play
 	auto btSetting = ui::Button::create("btSetting.png");//button setting
 	
 	bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	btPlay->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	btSetting->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 50));
+	btPlay->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y + 60));
+	btSetting->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 70));
 	
 	float scale = MAX(visibleSize.width / bg->getContentSize().width, visibleSize.height / bg->getContentSize().height);
 
-	btPlay->setScale(0.2);
-	btSetting->setScale(0.15);
+	btPlay->setScale(0.5);
+	btSetting->setScale(0.45);
 	bg->setScale(scale);
 
 	//set event Play & Setting
@@ -69,10 +69,6 @@ bool MainMenuScene::init()
 
 	scheduleUpdate();
 	return true;
-}
-
-void MainMenuScene::update(float deltaTime)
-{
 }
 
 MainMenuScene::MainMenuScene()

@@ -8,7 +8,7 @@ class SettingScene :
 public:
 	static Scene* createScene();
 	virtual bool init();
-	void update(float deltaTime);
+
 	void SoundCallback();
 	void AboutCallback();
 	CREATE_FUNC(SettingScene);
