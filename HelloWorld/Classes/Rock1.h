@@ -1,13 +1,12 @@
 #pragma once
 #include "OObject.h"
-class Rock :
+class Rock1 :
 	public OObject
 {
 public:
 	void Init();
 	void Update(float deltaTime);
 
-	Rock(Scene * scene);
-	~Rock();
+	Rock1(Scene* scene);
+	~Rock1();
 };
-

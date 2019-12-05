@@ -1,6 +1,6 @@
 #pragma once
 #include "OObject.h"
-#include "Rock.h"
+#include "Rock1.h"
 #include <list>
 using namespace std;
 
@@ -13,7 +13,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	void Shoot();
-	void Collision(vector<Rock*>);
+	void Collision(vector<Rock1*>);
 
 	Dinasour(Scene* scene);
 	~Dinasour();

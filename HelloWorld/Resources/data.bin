@@ -20,10 +20,10 @@ PATH: /Sprites/slider_bar_pressed.png
 #BUTTON 3
 ID: 0
 NORMAL_PATH: /Buttons/btPlay.png
-PRESSED_PATH: /Buttons/btPlay.png
+PRESSED_PATH: /Buttons/btPlay_press.png
 ID: 1
-NORMAL_PATH: /Buttons/resume_normal.png
-PRESSED_PATH: /Buttons/resume_pressed.png
+NORMAL_PATH: /Buttons/btSetting.png
+PRESSED_PATH: /Buttons/btSetting_press.png
 ID: 2
 NORMAL_PATH: /Buttons/home_normal.png
 PRESSED_PATH: /Buttons/home_pressed.png

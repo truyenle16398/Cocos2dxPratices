@@ -1,6 +1,5 @@
 #include "ResourceManager.h"
 
-
 ResourceManager* ResourceManager::s_instance = NULL;
 
 ResourceManager * ResourceManager::GetInstance()
@@ -21,14 +20,12 @@ void ResourceManager::Load(string fileName)
 {
 	//load all data from Data.bin
 	string readFromFile = FileUtils::getInstance()->getStringFromFile(fileName);//store all text in file 
-	//log("%s",readFromFile.c_str());
 
 	std::vector<string> vector_lines;//create vector to store line in file
 	
 	//split by "\n" into line
 	char *readFromFileChar = const_cast<char*>(readFromFile.c_str());
 	char* line = strtok(readFromFileChar, "\r\n");//split into line
-	
 	while (line != NULL)
 	{
 		vector_lines.push_back(line);//push line into vector
@@ -55,6 +52,8 @@ void ResourceManager::Load(string fileName)
 				istringstream is1(vector_lines[i]);
 				is1 >> str1 >> str2;
 				string path = str2;
+				auto sprite = Sprite::create(path);
+				m_sprites.insert(pair<int, Sprite*>(id, sprite));
 				numOfSprite--;
 			}
 		}
@@ -79,6 +78,8 @@ void ResourceManager::Load(string fileName)
 				is2 >> str1 >> str2;
 				string path2 = str2;
 
+				auto button = ui::Button::create(path1,path2,path1);
+				m_buttons.insert(pair<int, ui::Button*>(id, button));
 				numOfButton--;
 			}
 		}
@@ -102,7 +103,6 @@ void ResourceManager::Load(string fileName)
 		}
 
 	}
-
 }
 
 Sprite * ResourceManager::GetSpriteById(int id)
@@ -120,11 +120,9 @@ Label * ResourceManager::GetLableById(int id)
 	return m_labels[id];
 }
 
-
 ResourceManager::ResourceManager()
 {
 }
-
 
 ResourceManager::~ResourceManager()
 {

@@ -106,7 +106,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 	ResourceManager::GetInstance()->Init("data.bin");
-	auto myScene = SettingScene::createScene();
+	auto myScene = MainMenuScene::createScene();
 
 	director->runWithScene(myScene); // khoi tao canh dau tien cho game
 

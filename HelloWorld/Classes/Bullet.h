@@ -10,4 +10,3 @@ public:
 	Bullet(Scene * scene);
 	~Bullet();
 };
-

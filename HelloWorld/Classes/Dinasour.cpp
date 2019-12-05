@@ -14,7 +14,7 @@ void Dinasour::Shoot()
 {
 }
 
-void Dinasour::Collision(vector<Rock*>)
+void Dinasour::Collision(vector<Rock1*>)
 {
 }
 

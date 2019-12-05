@@ -2,6 +2,10 @@
 #include "ui/CocosGUI.h"
 #include "LoadingScene.h"
 #include "SettingScene.h"
+#include "ResourceManager.h"
+#include "Rock1.h"
+#include "Bullet.h"
+
 
 Scene * MainMenuScene::createScene()
 {
@@ -11,13 +15,13 @@ Scene * MainMenuScene::createScene()
 bool MainMenuScene::init()
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
 	if (!Scene::init())
 	{
 		return false;
 	}
 
-	auto bg = Sprite::create("background1.png");//background
+	/*auto bg = Sprite::create("background1.png");//background
 	auto btPlay = ui::Button::create("btPlay.png");//button play
 	auto btSetting = ui::Button::create("btSetting.png");//button setting
 	
@@ -36,12 +40,12 @@ bool MainMenuScene::init()
 		switch (type)
 		{
 		case ui::Widget::TouchEventType::BEGAN: {
-			auto reScene = LoadingScene::createScene();
-			Director::getInstance()->replaceScene(TransitionFade::create(2, reScene, Color3B(0, 0, 0)));
 			break;
 		}
-		case ui::Widget::TouchEventType::ENDED:
-			break;
+		case ui::Widget::TouchEventType::ENDED: {
+			auto reScene = LoadingScene::createScene();
+			Director::getInstance()->replaceScene(TransitionFade::create(2, reScene, Color3B(0, 0, 0)));
+			break; }
 		default:
 			break;
 		}
@@ -51,11 +55,12 @@ bool MainMenuScene::init()
 		switch (type)
 		{
 		case ui::Widget::TouchEventType::BEGAN: {
+			break;
+		}
+		case ui::Widget::TouchEventType::ENDED: {
 			Director::getInstance()->replaceScene(SettingScene::create());
 			break;
 		}
-		case ui::Widget::TouchEventType::ENDED:
-			break;
 		default:
 			break;
 		}
@@ -64,17 +69,16 @@ bool MainMenuScene::init()
 	//print screen
 	this->addChild(bg);
 	this->addChild(btPlay);
-	this->addChild(btSetting);
+	this->addChild(btSetting);*/
 
-
+	r = new Rock1(this);
+	b = new Bullet(this);
 	scheduleUpdate();
 	return true;
 }
 
-MainMenuScene::MainMenuScene()
+void MainMenuScene::update(float deltaTime)
 {
-}
-
-MainMenuScene::~MainMenuScene()
-{
+	this->r->Update(deltaTime);
+	this->b->Update(deltaTime);
 }

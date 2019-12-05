@@ -1,4 +1,4 @@
-#pragma once
+  #pragma once
 #include <cocos2d.h>
 USING_NS_CC;
 class OObject
@@ -8,6 +8,9 @@ private:
 public:
 	virtual void Init();
 	virtual void Update(float deltaTime);
+
+	void setSprite(Sprite* sprite);
+	Sprite* getSprite();
 
 	OObject();
 	~OObject();
