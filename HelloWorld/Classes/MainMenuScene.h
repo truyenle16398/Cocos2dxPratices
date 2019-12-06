@@ -7,9 +7,6 @@ USING_NS_CC;
 class MainMenuScene :
 	public Scene
 {
-private:
-	OObject* r;
-	OObject* b;
 public:
 	static Scene* createScene();
 	virtual bool init();

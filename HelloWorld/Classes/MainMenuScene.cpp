@@ -71,14 +71,11 @@ bool MainMenuScene::init()
 	this->addChild(btPlay);
 	this->addChild(btSetting);*/
 
-	r = new Rock1(this);
-	b = new Bullet(this);
+	
 	scheduleUpdate();
 	return true;
 }
 
 void MainMenuScene::update(float deltaTime)
 {
-	this->r->Update(deltaTime);
-	this->b->Update(deltaTime);
 }

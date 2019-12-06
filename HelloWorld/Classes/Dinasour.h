@@ -8,11 +8,11 @@ class Dinasour :
 	public OObject
 {
 private:
-	list <OObject*> m_bullets;
+	vector <OObject*> m_bullets;
 public:
 	void Init();
 	void Update(float deltaTime);
-	void Shoot();
+	void Shoot(float deltaTime);
 	void Collision(vector<Rock1*>);
 
 	Dinasour(Scene* scene);

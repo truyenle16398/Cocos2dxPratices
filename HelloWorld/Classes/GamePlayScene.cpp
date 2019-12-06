@@ -1,5 +1,11 @@
 ﻿#include "GamePlayScene.h"
+#include "ResourceManager.h"
+#include "Rock1.h"
+#include "Bullet.h"
+#include "Dinasour.h"
+#include <time.h>
 
+vector<Rock1*> vectorRock;
 
 Scene * GamePlayScene::createScene()
 {
@@ -15,44 +21,26 @@ bool GamePlayScene::init()
 		return false;
 	}
 
-	auto bg = Sprite::create("background.png");//background
+	//Background
+	auto bg = ResourceManager::GetInstance()->GetSpriteById(0);
 	bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	float scale = MAX(visibleSize.width / bg->getContentSize().width, visibleSize.height / bg->getContentSize().height);
 	bg->setScale(scale);
 	this->addChild(bg, -1);
+	
+	d = new Dinasour(this);//create Dinasour
 
-	//dinasour
-	auto dinasourlist = SpriteFrameCache::getInstance();
-	dinasourlist->addSpriteFramesWithFile("dinasou.plist", "dinasour1.png");
-	dinasour = Sprite::create();
-	dinasour->setPosition(Vec2(80,80));
-	dinasour->setScale(0.35);
-	this->addChild(dinasour);
-
-	Vector<SpriteFrame*>list;
-	for (int i = 0; i < 2; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			list.pushBack(SpriteFrame::create("dinasour1.png", Rect(j*450, i*370, 450, 370)));
-		}
-	}
-
-	list.reverse();
-	Animation* animation = Animation::createWithSpriteFrames(list, 0.1f);
-	Animate* animate = Animate::create(animation);
-	dinasour->runAction(RepeatForever::create(animate));
+	r = new Rock1(this);//create Rock
 
 	//Mouse
 	auto listenerMouse = EventListenerTouchOneByOne::create();
 	listenerMouse->onTouchBegan = CC_CALLBACK_2(GamePlayScene::OnTouchBegan, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerMouse, this);
-	
+
 	//Keyboard
 	auto listenerKeyboard = EventListenerKeyboard::create();
 	listenerKeyboard->onKeyPressed = CC_CALLBACK_2(GamePlayScene::onKeyPressed, this);
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerKeyboard, dinasour);
-
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerKeyboard, d->getSprite());
 
 	scheduleUpdate();
 	return true;
@@ -63,35 +51,38 @@ void GamePlayScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_UP_ARROW: {
-		event->getCurrentTarget()->runAction(MoveTo::create(0.3,Vec2(dinasour->getPosition().x, dinasour->getPosition().y + 30)));// 1 lan bam di chuyen 30. => s = 30. v tu cho = 100. => t = s/v = 0.3
+		event->getCurrentTarget()->runAction(MoveTo::create(0.3,Vec2(d->getSprite()->getPosition().x, d->getSprite()->getPosition().y + 30)));// 1 lan bam di chuyen 30. => s = 30. v tu cho = 100. => t = s/v = 0.3
 		break;
 	}
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW: {
-		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(dinasour->getPosition().x, dinasour->getPosition().y - 30)));
+		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(d->getSprite()->getPosition().x, d->getSprite()->getPosition().y - 30)));
 		break;
 	}
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW: {
-		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(dinasour->getPosition().x + 30, dinasour->getPosition().y)));
+		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(d->getSprite()->getPosition().x + 30, d->getSprite()->getPosition().y)));
 		break;
 	}
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW: {
-		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(dinasour->getPosition().x - 30, dinasour->getPosition().y)));
+		event->getCurrentTarget()->runAction(MoveTo::create(0.3, Vec2(d->getSprite()->getPosition().x - 30, d->getSprite()->getPosition().y)));
 		break;
 	}
 	default:
 		break;
 	}
 }
-void GamePlayScene::update(float deltaTime)
-{
-}
 
 bool GamePlayScene::OnTouchBegan(Touch* touch, Event* event)
 {
-	double t = sqrt(pow((touch->getLocation().x - dinasour->getPosition().x), 2) + pow((touch->getLocation().y - dinasour->getPosition().y), 2)) / 100;// t = s/v. s la khoang cach 2 diem. v la van toc tu cho = 100
+	double t = sqrt(pow((touch->getLocation().x - d->getSprite()->getPosition().x), 2) + pow((touch->getLocation().y - d->getSprite()->getPosition().y), 2)) / 100;// t = s/v. s la khoang cach 2 diem. v la van toc tu cho = 100
 	auto move = MoveTo::create(t, Vec2(touch->getLocation().x, touch->getLocation().y));
-	dinasour->runAction(move);
+	d->getSprite()->runAction(move);
 	return true;
+}
+
+void GamePlayScene::update(float deltaTime)
+{
+	r->Update(deltaTime);
+	d->Update(deltaTime);
 }
 
 GamePlayScene::GamePlayScene()
