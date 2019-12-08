@@ -4,14 +4,17 @@
 
 void Bullet::Init()
 {
-	this->setSprite(ResourceManager::GetInstance()->GetSpriteById(4));
+	auto bullet = ResourceManager::GetInstance()->GetSpriteById(4);
+	auto cloneBullet = Sprite::createWithSpriteFrame(bullet->getSpriteFrame());
+	setSprite(cloneBullet);
 	this->getSprite()->setScale(0.1);
 
 }
 
 void Bullet::Update(float deltaTime)
 {
-	this->getSprite()->setPosition(this->getSprite()->getPosition().x + 500 * deltaTime, this->getSprite()->getPosition().y);
+	auto move = MoveBy::create(2.0f, Vec2(1000,0));
+	this->getSprite()->runAction(move);
 }
 
 Bullet::Bullet(Scene * scene)

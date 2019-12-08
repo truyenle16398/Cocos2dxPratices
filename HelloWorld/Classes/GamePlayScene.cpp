@@ -4,9 +4,10 @@
 #include "Bullet.h"
 #include "Dinasour.h"
 #include <time.h>
-
-vector<Rock1*> vectorRock;
-
+#include <vector>
+using namespace std;
+static float a = 0;
+Dinasour* d;
 Scene * GamePlayScene::createScene()
 {
 	return GamePlayScene::create();
@@ -29,24 +30,36 @@ bool GamePlayScene::init()
 	this->addChild(bg, -1);
 	
 	d = new Dinasour(this);//create Dinasour
-
-	r = new Rock1(this);//create Rock
-
+	//create rock
+	for (int i = 0; i < 20; i++)
+	{
+		auto r = new Rock1(this);
+		this->m_rocks.push_back(r);
+		this->addChild(r->getSprite());
+		r->getSprite()->setPosition(visibleSize.width , i * visibleSize.height / 20);
+		r->getSprite()->setVisible(false);
+	}
+						   
 	//Mouse
 	auto listenerMouse = EventListenerTouchOneByOne::create();
 	listenerMouse->onTouchBegan = CC_CALLBACK_2(GamePlayScene::OnTouchBegan, this);
+	listenerMouse->onTouchMoved = CC_CALLBACK_2(GamePlayScene::OnTouchMoved, this);
+	listenerMouse->onTouchEnded = CC_CALLBACK_2(GamePlayScene::OnTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerMouse, this);
+
+	
 
 	//Keyboard
 	auto listenerKeyboard = EventListenerKeyboard::create();
-	listenerKeyboard->onKeyPressed = CC_CALLBACK_2(GamePlayScene::onKeyPressed, this);
+	listenerKeyboard->onKeyPressed = CC_CALLBACK_2(GamePlayScene::OnKeyPressed, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listenerKeyboard, d->getSprite());
 
 	scheduleUpdate();
 	return true;
 }
 
-void GamePlayScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+
+void GamePlayScene::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
@@ -79,10 +92,45 @@ bool GamePlayScene::OnTouchBegan(Touch* touch, Event* event)
 	return true;
 }
 
+bool GamePlayScene::OnTouchEnded(Touch * touch, Event * event)
+{
+	return false;
+}
+
+bool GamePlayScene::OnTouchMoved(Touch * touch, Event * event)
+{
+	d->getSprite()->setPosition(d->getSprite()->getPosition() + touch->getDelta());
+	return true;
+}
+
 void GamePlayScene::update(float deltaTime)
 {
-	r->Update(deltaTime);
+	a += deltaTime;
+	auto visibleSize = Director::getInstance()->getVisibleSize();
 	d->Update(deltaTime);
+	
+	int rockSize = this->m_rocks.size();
+	int randomNumber = rand() % (rockSize + 1);
+	auto moveBy = MoveBy::create(10.0f, Vec2(-1300, 0));
+	if (a > 80 * deltaTime)
+	{
+		for (int i = randomNumber; i < rockSize; i++)
+		{
+			auto rock = this->m_rocks[i]->getSprite();
+			if (!rock->isVisible())
+			{
+				rock->runAction(moveBy->clone());
+				rock->setVisible(true);
+				i = rockSize + 10;
+				a = 0;
+			}
+		}
+	}
+	for (int i = 0; i < rockSize; i++)
+	{
+		this->m_rocks[i]->Update(deltaTime);
+	}
+	d->Collision(m_rocks);
 }
 
 GamePlayScene::GamePlayScene()

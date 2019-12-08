@@ -6,21 +6,23 @@
 #include "Bullet.h"
 #include <vector>
 USING_NS_CC;
-
+using namespace std;
 class GamePlayScene :
 	public Scene
 {
 private:
-	OObject* r;
-	OObject* b;
-	OObject* d;
+	//Dinasour* d;
+	vector<Rock1*> m_rocks;
 public:
 	static Scene* createScene();
 	virtual bool init();
 	void update(float deltaTime);
-	virtual void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	CREATE_FUNC(GamePlayScene);
+
+	virtual void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	virtual bool OnTouchBegan(Touch* touch, Event* event);
+	virtual bool OnTouchEnded(Touch* touch, Event* event);
+	virtual bool OnTouchMoved(Touch* touch, Event* event);
+	CREATE_FUNC(GamePlayScene);
 
 	GamePlayScene();
 	~GamePlayScene();

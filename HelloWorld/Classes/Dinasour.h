@@ -13,7 +13,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	void Shoot(float deltaTime);
-	void Collision(vector<Rock1*>);
+	void Collision(vector<Rock1*> rocks);
 
 	Dinasour(Scene* scene);
 	~Dinasour();

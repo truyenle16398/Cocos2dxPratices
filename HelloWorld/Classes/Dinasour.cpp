@@ -3,7 +3,7 @@
 #include "GamePlayScene.h"
 #include "Bullet.h"
 
-
+static float a = 0;
 void Dinasour::Init()
 {
 	//Init dinasour
@@ -11,7 +11,7 @@ void Dinasour::Init()
 	dinasourlist->addSpriteFramesWithFile("dinasou.plist", "dinasour1.png");
 
 	this->setSprite(ResourceManager::GetInstance()->GetSpriteById(5));
-	this->getSprite()->setScale(0.5);
+	this->getSprite()->setScale(0.4);
 
 	Vector<SpriteFrame*>list;
 	for (int i = 0; i < 2; i++)
@@ -36,25 +36,44 @@ void Dinasour::Update(float deltaTime)
 
 void Dinasour::Shoot(float deltaTime)
 {
-	m_bullets[0]->Update(deltaTime);
-
-	if (m_bullets[0]->getSprite()->isVisible() == false)
+	a += deltaTime;
+	for (int i = 0; i < m_bullets.size(); i++)
 	{
-		m_bullets[0]->getSprite()->setVisible(true);
-		//m_bullets[0]->Update(deltaTime);
-		//m_bullets[0]->getSprite()->setVisible(false);
+		if (m_bullets[i]->getSprite()->isVisible() == false && a >= 15 * deltaTime)
+		{
+			m_bullets[i]->getSprite()->setVisible(true);
+			m_bullets[i]->getSprite()->setPosition(this->getSprite()->getPosition());
+			m_bullets[i]->Update(deltaTime);
+			a = 0;
+		}
+		if (m_bullets[i]->getSprite()->getPosition().x >= Director::getInstance()->getVisibleSize().width)
+		{
+			m_bullets[i]->getSprite()->stopAllActions();
+			m_bullets[i]->getSprite()->setVisible(false);
+			m_bullets[i]->getSprite()->setPosition(Vec2(this->getSprite()->getPosition().x, this->getSprite()->getPosition().y));
+		}
+		
 	}
-
-	if (m_bullets[0]->getSprite()->getPosition().x >= Director::getInstance()->getVisibleSize().width)
-	{
-		m_bullets[0]->getSprite()->setPosition(this->getSprite()->getPosition());
-	}
-
-	
 }
 
-void Dinasour::Collision(vector<Rock1*>)
+void Dinasour::Collision(vector<Rock1*> rocks)
 {
+	for (int i = 0; i < rocks.size(); i++)
+	{
+		auto rock = rocks[i]->getSprite();
+		for (int i = 0; i < m_bullets.size(); i++)
+		{
+			auto bullet = this->m_bullets[i]->getSprite();
+			if (bullet->getBoundingBox().intersectsRect(rock->getBoundingBox())
+				&& rock->isVisible() && bullet->isVisible())
+			{
+				bullet->setVisible(false);
+				rock->setVisible(false);
+				rock->setPosition(rock->getPosition().x, -100);
+				bullet->setPosition(bullet->getPosition().x, 1000);
+			}
+		}
+	}
 }
 
 Dinasour::Dinasour(Scene* scene)
@@ -63,13 +82,13 @@ Dinasour::Dinasour(Scene* scene)
 	scene->addChild(this->getSprite(),0);
 	this->getSprite()->setPosition(100, Director::getInstance()->getVisibleSize().height / 2);
 
+	for (int i = 0; i < 10; i++)
+	{
 		Bullet *bullet = new Bullet(scene);
 		this->m_bullets.push_back(bullet);
-		scene->addChild(m_bullets[0]->getSprite(),0);
-		m_bullets[0]->getSprite()->setPosition(this->getSprite()->getPosition());
-		//m_bullets[0]->getSprite()->setVisible(false);
-	
-
+		scene->addChild(m_bullets[i]->getSprite(), 0);
+		m_bullets[i]->getSprite()->setVisible(false);
+	}
 }
 
 Dinasour::~Dinasour()
