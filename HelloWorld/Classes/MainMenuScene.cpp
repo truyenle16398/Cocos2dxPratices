@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "Rock1.h"
 #include "Bullet.h"
+#include "GamePlayScene.h"
 
 
 Scene * MainMenuScene::createScene()
@@ -21,13 +22,13 @@ bool MainMenuScene::init()
 		return false;
 	}
 
-	/*auto bg = Sprite::create("background1.png");//background
+	auto bg = Sprite::create("background1.png");//background
 	auto btPlay = ui::Button::create("btPlay.png");//button play
 	auto btSetting = ui::Button::create("btSetting.png");//button setting
 	
-	bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	btPlay->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y + 60));
-	btSetting->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 70));
+	bg->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 2 ));
+	btPlay->setPosition(Vec2(visibleSize.width / 2,  visibleSize.height / 2+ 60));
+	btSetting->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 70));
 	
 	float scale = MAX(visibleSize.width / bg->getContentSize().width, visibleSize.height / bg->getContentSize().height);
 
@@ -43,7 +44,7 @@ bool MainMenuScene::init()
 			break;
 		}
 		case ui::Widget::TouchEventType::ENDED: {
-			auto reScene = LoadingScene::createScene();
+			auto reScene = GamePlayScene::createScene();
 			Director::getInstance()->replaceScene(TransitionFade::create(2, reScene, Color3B(0, 0, 0)));
 			break; }
 		default:
@@ -69,7 +70,7 @@ bool MainMenuScene::init()
 	//print screen
 	this->addChild(bg);
 	this->addChild(btPlay);
-	this->addChild(btSetting);*/
+	this->addChild(btSetting);
 
 	
 	scheduleUpdate();

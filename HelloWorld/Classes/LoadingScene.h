@@ -12,6 +12,7 @@ public:
 
 	CREATE_FUNC(LoadingScene);
 	LoadingScene();
+	Sprite* clone(Sprite* sprite);
 	~LoadingScene();
 };
 

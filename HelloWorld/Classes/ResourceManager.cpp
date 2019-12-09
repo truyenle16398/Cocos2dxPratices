@@ -53,8 +53,30 @@ void ResourceManager::Load(string fileName)
 				is1 >> str1 >> str2;
 				string path = str2;
 				auto sprite = Sprite::create(path);
+				//sprite->retain();
 				m_sprites.insert(pair<int, Sprite*>(id, sprite));
 				numOfSprite--;
+			}
+		}
+
+		else if (str1 == "#LOADING")
+		{
+			int numOfLoading = stoi(str2);
+			while (numOfLoading > 0)
+			{
+				i++;
+				istringstream is(vector_lines[i]);
+				is >> str1 >> str2;
+				int id = stoi(str2);
+
+				i++;
+				istringstream is1(vector_lines[i]);
+				is1 >> str1 >> str2;
+				string path = str2;
+
+				auto loading = ui::LoadingBar::create(path);
+				m_loadings.insert(pair<int, ui::LoadingBar*>(id, loading));
+				numOfLoading--;
 			}
 		}
 
@@ -83,7 +105,6 @@ void ResourceManager::Load(string fileName)
 				numOfButton--;
 			}
 		}
-
 		else if (str1 == "#FONT")
 		{
 			int numOfFont = stoi(str2);
@@ -118,6 +139,11 @@ ui::Button * ResourceManager::GetButtonById(int id)
 Label * ResourceManager::GetLableById(int id)
 {
 	return m_labels[id];
+}
+
+ui::LoadingBar * ResourceManager::GetLoadingById(int id)
+{
+	return m_loadings[id];
 }
 
 ResourceManager::ResourceManager()

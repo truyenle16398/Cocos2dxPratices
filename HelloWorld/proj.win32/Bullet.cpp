@@ -1,14 +1,12 @@
 #include "..\Classes\Bullet.h"
 #include "ResourceManager.h"
 
-
 void Bullet::Init()
 {
 	auto bullet = ResourceManager::GetInstance()->GetSpriteById(4);
 	auto cloneBullet = Sprite::createWithSpriteFrame(bullet->getSpriteFrame());
 	setSprite(cloneBullet);
 	this->getSprite()->setScale(0.1);
-
 }
 
 void Bullet::Update(float deltaTime)

@@ -2,6 +2,10 @@
 #include "ResourceManager.h"
 #include "GamePlayScene.h"
 #include "Bullet.h"
+#include "GameOverScene.h"
+#include "SimpleAudioEngine.h"
+using namespace CocosDenshion;
+
 
 static float a = 0;
 void Dinasour::Init()
@@ -11,7 +15,7 @@ void Dinasour::Init()
 	dinasourlist->addSpriteFramesWithFile("dinasou.plist", "dinasour1.png");
 
 	this->setSprite(ResourceManager::GetInstance()->GetSpriteById(5));
-	this->getSprite()->setScale(0.4);
+	this->getSprite()->setScale(0.3);
 
 	Vector<SpriteFrame*>list;
 	for (int i = 0; i < 2; i++)
@@ -42,6 +46,8 @@ void Dinasour::Shoot(float deltaTime)
 		if (m_bullets[i]->getSprite()->isVisible() == false && a >= 15 * deltaTime)
 		{
 			m_bullets[i]->getSprite()->setVisible(true);
+			auto audio = SimpleAudioEngine::getInstance();
+			audio->playEffect("Sounds/fire.wav", false, 1.0f, 1.0f, 1.0f);
 			m_bullets[i]->getSprite()->setPosition(this->getSprite()->getPosition());
 			m_bullets[i]->Update(deltaTime);
 			a = 0;
@@ -55,7 +61,6 @@ void Dinasour::Shoot(float deltaTime)
 		
 	}
 }
-
 void Dinasour::Collision(vector<Rock1*> rocks)
 {
 	for (int i = 0; i < rocks.size(); i++)
@@ -67,11 +72,26 @@ void Dinasour::Collision(vector<Rock1*> rocks)
 			if (bullet->getBoundingBox().intersectsRect(rock->getBoundingBox())
 				&& rock->isVisible() && bullet->isVisible())
 			{
+
 				bullet->setVisible(false);
 				rock->setVisible(false);
+				auto audio = SimpleAudioEngine::getInstance();
+				audio->playEffect("Sounds/killed.wav", false, 1.0f, 1.0f, 1.0f);
+
+				auto particleSystem = ParticleSystem::create("particle_texture.plist");
+				particleSystem->setPosition(rock->getPosition());
+				this->scene->addChild(particleSystem);
+
 				rock->setPosition(rock->getPosition().x, -100);
 				bullet->setPosition(bullet->getPosition().x, 1000);
 			}
+		}
+
+		if (rock->getBoundingBox().intersectsRect(this->getSprite()->getBoundingBox())
+			&& rock->isVisible())
+		{
+			//Director::getInstance()->replaceScene(TransitionFade::create(5.0f, GameOverScene::create(), Color3B(0, 0, 0)));
+			exit(0);
 		}
 	}
 }

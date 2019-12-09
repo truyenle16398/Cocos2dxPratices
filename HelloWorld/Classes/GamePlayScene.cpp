@@ -3,9 +3,12 @@
 #include "Rock1.h"
 #include "Bullet.h"
 #include "Dinasour.h"
+#include "SimpleAudioEngine.h"
 #include <time.h>
 #include <vector>
 using namespace std;
+using namespace CocosDenshion;
+
 static float a = 0;
 Dinasour* d;
 Scene * GamePlayScene::createScene()
@@ -21,7 +24,9 @@ bool GamePlayScene::init()
 	{
 		return false;
 	}
-
+	//Background Audio
+	auto audio = SimpleAudioEngine::getInstance();
+	audio->playBackgroundMusic("Sounds/ingame.mp3", true);
 	//Background
 	auto bg = ResourceManager::GetInstance()->GetSpriteById(0);
 	bg->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
@@ -112,7 +117,7 @@ void GamePlayScene::update(float deltaTime)
 	int rockSize = this->m_rocks.size();
 	int randomNumber = rand() % (rockSize + 1);
 	auto moveBy = MoveBy::create(10.0f, Vec2(-1300, 0));
-	if (a > 80 * deltaTime)
+	if (a > 60 * deltaTime)
 	{
 		for (int i = randomNumber; i < rockSize; i++)
 		{

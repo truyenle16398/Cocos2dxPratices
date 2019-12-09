@@ -71,7 +71,7 @@ bool SettingScene::init()
 	});
 
 	//slider
-	static auto slider = ui::Slider::create();
+	/*static auto slider = ui::Slider::create();
 	slider->loadBarTexture("slider_bar_bg.png");
 	slider->loadSlidBallTextures("slider_ball_normal.png", "slider_ball_disable.png");
 	slider->loadProgressBarTexture("slider_bar_pressed.png");
@@ -80,7 +80,7 @@ bool SettingScene::init()
 	slider->setScale(0.5);
 	slider->addClickEventListener([](Ref* event) {
 		log("Slider: %d", slider->getPercent());
-	});
+	});*/
 
 	//label display info
 	auto labelSound = Label::createWithTTF("SOUND:", "COOPBL.TTF", 30);
@@ -96,7 +96,7 @@ bool SettingScene::init()
 	l_Sound->addChild(labelSound);
 	l_Sound->addChild(labelMusic);
 	l_Sound->addChild(checkBox);
-	l_Sound->addChild(slider);
+	//l_Sound->addChild(slider);
 
 	l_Sound->setVisible(false);
 

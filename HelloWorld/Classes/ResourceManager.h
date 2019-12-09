@@ -15,6 +15,7 @@ private:
 	map<int, Sprite*> m_sprites;
 	map<int, ui::Button*> m_buttons;
 	map<int, Label*> m_labels;
+	map<int, ui::LoadingBar*>m_loadings;
 	ResourceManager();
 
 public:
@@ -25,6 +26,7 @@ public:
 	Sprite* GetSpriteById(int id);
 	ui::Button* GetButtonById(int id);
 	Label* GetLableById(int id);
+	ui::LoadingBar* GetLoadingById(int id);
 		
 	~ResourceManager();
 };
